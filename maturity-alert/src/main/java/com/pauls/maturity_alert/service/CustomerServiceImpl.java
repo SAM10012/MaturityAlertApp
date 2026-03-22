@@ -1,4 +1,52 @@
 package com.pauls.maturity_alert.service;
 
-public class CustomerServiceImpl {
+import com.pauls.maturity_alert.model.CustomerDetails;
+import com.pauls.maturity_alert.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+
+@Service
+public class CustomerServiceImpl implements CustomerService{
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+
+    @Override
+    public void addNewCustomer(CustomerDetails customerDetails) {
+        customerRepository.save(customerDetails);
+
+    }
+
+    @Override
+    public void deleteCustomerById(long id) {
+        customerRepository.deleteById(id);
+    }
+
+    @Override
+    public CustomerDetails getCustomerById(long id) {
+
+        Optional<CustomerDetails> optional = customerRepository.findById(id);
+
+        CustomerDetails customerDetails = null;
+
+        if(optional.isPresent())
+        {
+            customerDetails = optional.get();
+        }
+        else {
+            throw new RuntimeException("There is no such Customer ID.");
+        }
+
+        return customerDetails;
+    }
+
+    @Override
+    public List<CustomerDetails> getAllCustomers() {
+        return customerRepository.findAll();
+    }
 }
