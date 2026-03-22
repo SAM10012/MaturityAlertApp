@@ -29,7 +29,7 @@
             gap:20px;
         }
 
-        .med-btn{
+        .maturity-alert-app-btn{
             background-color:#C8FACC;  /* light green button */
             border:none;
             border-radius:25px;
@@ -40,7 +40,7 @@
             color:#0B6623; /* dark green text */
         }
 
-        .med-btn:hover{
+        .maturity-alert-app-btn:hover{
             background-color:#A3E4A9; /* hover effect */
             color:#0B6623;
         }
@@ -57,12 +57,20 @@
 
     <div class="button-container">
 
-        <a th:href="@{/customer/new}" class="btn med-btn">
+        <a th:href="@{/customer/new}" class="btn maturity-alert-app-btn">
             Add New Customer
         </a>
 
-        <a th:href="@{/customers/view}" class="btn med-btn">
-            View Customers
+        <a th:href="@{/customers/view}" class="btn maturity-alert-app-btn">
+            View All Customers
+        </a>
+
+        <a th:href="@{/investment/new}" class="btn maturity-alert-app-btn">
+            Add New Investment
+        </a>
+
+        <a th:href="@{/investments/view}" class="btn maturity-alert-app-btn">
+            View All Investments
         </a>
 
     </div>

@@ -18,11 +18,6 @@ public class InvestmentController {
     @Autowired
     private InvestmentService investmentService;
 
-    @GetMapping("/")
-    public String viewHomePage() {
-        return "homepage";
-    }
-
     @GetMapping("/investment/new")
     public String addNewInvestment(Model model) {
         InvestmentDetails investmentDetails = new InvestmentDetails();
@@ -45,7 +40,7 @@ public class InvestmentController {
 
     @GetMapping("/update-investment/{id}")
     public String updateInvestment(@PathVariable(value = "id") int id, Model model) {
-        InvestmentDetails investmentDetails = investmentService.getCustomerById(id);
+        InvestmentDetails investmentDetails = investmentService.getInvestmentById(id);
         model.addAttribute("investDetails", investmentDetails);
         return "update-investment-form";
     }
