@@ -10,13 +10,13 @@
     <style>
 
         body{
-            background-color:#F4FFF6; /* light green background */
+            background-color:#F4FFF6;
             font-weight:bold;
             font-family:Arial, sans-serif;
         }
 
         .container{
-            max-width:500px;
+            max-width:600px;
             margin:auto;
             text-align:center;
             margin-top:40px;
@@ -27,15 +27,15 @@
         }
 
         h1{
-            color:#0B6623; /* dark green */
+            color:#0B6623;
             margin-bottom:10px;
             font-weight:bold;
         }
 
         h2{
-            color:#0B6623; /* dark green */
+            color:#0B6623;
             font-size:22px;
-            margin-bottom:30px;
+            margin-bottom:25px;
             font-weight:bold;
         }
 
@@ -51,17 +51,17 @@
             box-shadow:0 0 5px rgba(11,102,35,0.3);
         }
 
-        .invest-btn{
-            background-color:#C8FACC; /* light green */
+        .cust-btn{
+            background-color:#C8FACC;
             border:none;
             border-radius:25px;
             padding:12px 30px;
-            color:#0B6623; /* dark green text */
+            color:#0B6623;
             font-weight:bold;
-            width:60%;
+            width:70%;
         }
 
-        .invest-btn:hover{
+        .cust-btn:hover{
             background-color:#A3E4A9;
             color:#0B6623;
         }
@@ -77,26 +77,67 @@
     <h1>MaturityAlert</h1>
     <hr>
 
-    <h2>Enter the below requested details</h2>
+    <h2>Enter Investment Details</h2>
 
-    <form action="#" th:action="@{/investment/save}" th:object="${investDetails}" method="POST">
+    <form th:action="@{/investment/save}" th:object="${investDetails}" method="POST">
 
-        <input type="text"
-               th:field="*{custName}"
-               placeholder="Name of Customer"
-               class="form-control mb-4">
-
-        <input type="text"
-               th:field="*{custPhone}"
-               placeholder="Customer Phone Number"
-               class="form-control mb-4">
+        <!-- If using customer mapping -->
+        <input type="number" th:field="*{customer.custId}" placeholder="Customer ID"
+               class="form-control mb-3">
 
         <input type="text"
-               th:field="*{custEmail}"
-               placeholder="Customer Email ID"
-               class="form-control mb-4">
+               th:field="*{bankName}"
+               placeholder="Bank Name"
+               class="form-control mb-3">
 
-        <button type="submit" class="btn invest-btn">
+        <input type="text"
+               th:field="*{schemeName}"
+               placeholder="Scheme Name"
+               class="form-control mb-3">
+
+        <input type="number"
+               th:field="*{depositAccountNum}"
+               placeholder="Deposit Account Number"
+               class="form-control mb-3">
+
+        <input type="number" step="0.01"
+               th:field="*{principal}"
+               placeholder="Principal Amount"
+               class="form-control mb-3">
+
+        <input type="number" step="0.01"
+               th:field="*{interestRate}"
+               placeholder="Interest Rate (%)"
+               class="form-control mb-3">
+
+        <input type="date"
+               th:field="*{startDate}"
+               class="form-control mb-3">
+
+        <input type="date"
+               th:field="*{maturityDate}"
+               class="form-control mb-3">
+
+        <input type="number"
+               th:field="*{creditAccountNum}"
+               placeholder="Credit Account Number"
+               class="form-control mb-3">
+
+        <!-- Auto Renew -->
+        <select th:field="*{autoRenew}" class="form-control mb-3">
+            <option th:value="true">Auto Renew - Yes</option>
+            <option th:value="false">Auto Renew - No</option>
+        </select>
+
+        <!-- ✅ Investment Status Dropdown -->
+        <select th:field="*{status}" class="form-control mb-4">
+            <option th:each="s : ${T(com.pauls.maturity_alert.model.InvestmentStatus).values()}"
+                    th:value="${s}"
+                    th:text="${s}">
+            </option>
+        </select>
+
+        <button type="submit" class="btn cust-btn">
             Add New Investment
         </button>
 
