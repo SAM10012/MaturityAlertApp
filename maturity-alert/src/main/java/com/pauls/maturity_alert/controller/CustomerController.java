@@ -1,6 +1,7 @@
 package com.pauls.maturity_alert.controller;
 
 import com.pauls.maturity_alert.model.CustomerDetails;
+import com.pauls.maturity_alert.model.InvestmentDetails;
 import com.pauls.maturity_alert.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class CustomerController {
@@ -48,7 +50,7 @@ public class CustomerController {
     }
 
     @GetMapping("/delete-customer/{id}")
-    public String deleteCustomer(@PathVariable(value = "id") int id) {
+    public String deleteCustomerById(@PathVariable(value = "id") int id) {
         customerService.deleteCustomerById(id);
         return "redirect:/";
     }

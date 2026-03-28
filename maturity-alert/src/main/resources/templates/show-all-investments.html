@@ -89,7 +89,8 @@
 
         <thead>
         <tr>
-            <th>ID</th>
+
+            <th>User Name</th>
             <th>Bank</th>
             <th>Scheme</th>
             <th>Principal</th>
@@ -106,7 +107,8 @@
 
         <tr th:each="inv : ${allInvestments}">
 
-            <td th:text="${inv.investId}"></td>
+
+            <td th:text="${inv.customer.custName}"></td>
             <td th:text="${inv.bankName}"></td>
             <td th:text="${inv.schemeName}"></td>
             <td th:text="${inv.principal}"></td>
