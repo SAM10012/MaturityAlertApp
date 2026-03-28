@@ -10,27 +10,36 @@
     <style>
 
         body{
-            background-color:#F8F6FB;
+            background-color:#F4FFF6;
             font-weight:bold;
+            font-family:Arial, sans-serif;
         }
 
-        /* Main heading */
+        .container{
+            max-width:900px;
+            margin:auto;
+            margin-top:40px;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0px 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Heading */
         h1{
-            color:#6A0DAD;
-            font-weight:bold;
             text-align:center;
-            margin-bottom:30px;
+            color:#0B6623;
+            font-weight:bold;
         }
 
-        /* Table center alignment */
         table{
-            text-align:center;
+            margin-top:20px;
         }
 
-        /* Column headings */
+        /* Table headers */
         th{
-            color:#6A0DAD;
-            font-weight:bold;
+            background-color:#C8FACC;
+            color:#0B6623;
             text-align:center;
         }
 
@@ -42,19 +51,34 @@
 
         /* Update button */
         .update-btn{
-            background-color:#B8F5B8;   /* light green */
-            color:black;
-            font-weight:bold;
-            border:none;
+            background-color:#A3E4A9;
+            color:#0B6623;
+            border-radius:20px;
+            padding:5px 12px;
+            text-decoration:none;
             margin-right:5px;
         }
 
         /* Delete button */
         .delete-btn{
-            background-color:#FFB6B6;   /* light red */
-            color:black;
-            font-weight:bold;
-            border:none;
+            background-color:#FFB3B3;
+            color:#8B0000;
+            border-radius:20px;
+            padding:5px 12px;
+            text-decoration:none;
+        }
+
+        /* Optional top button (if you add later) */
+        .top-btn{
+            display:block;
+            width:250px;
+            margin:20px auto;
+            text-align:center;
+            background-color:#C8FACC;
+            padding:10px;
+            border-radius:25px;
+            color:#0B6623;
+            text-decoration:none;
         }
 
     </style>
@@ -63,11 +87,12 @@
 
 <body>
 
-<div class="container my-4">
+<div class="container">
 
     <h1>Customers</h1>
+    <hr>
 
-    <table border="1" class="table table-striped table-responsive-md">
+    <table class="table table-bordered">
 
         <thead>
         <tr>
@@ -75,7 +100,6 @@
             <th>Customer Phone Number</th>
             <th>Customer Email ID</th>
             <th>Actions</th>
-
         </tr>
         </thead>
 
@@ -86,19 +110,18 @@
             <td th:text="${custInfo.custName}"></td>
             <td th:text="${custInfo.custPhone}"></td>
             <td th:text="${custInfo.custEmail}"></td>
-            <td>
 
+            <td>
                 <a th:href="@{/update-customer/{id}(id=${custInfo.custId})}"
-                   class="btn update-btn">
+                   class="update-btn">
                     Update
                 </a>
 
                 <a th:href="@{/delete-customer/{id}(id=${custInfo.custId})}"
-                   class="btn delete-btn"
+                   class="delete-btn"
                    onclick="return confirm('Are you sure you want to delete this customer?')">
                     Delete
                 </a>
-
             </td>
 
         </tr>
