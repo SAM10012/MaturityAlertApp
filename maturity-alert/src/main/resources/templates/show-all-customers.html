@@ -25,7 +25,6 @@
             box-shadow:0px 4px 12px rgba(0,0,0,0.1);
         }
 
-        /* Heading */
         h1{
             text-align:center;
             color:#0B6623;
@@ -36,48 +35,37 @@
             margin-top:20px;
         }
 
-        /* Table headers */
         th{
             background-color:#C8FACC;
             color:#0B6623;
             text-align:center;
         }
 
-        /* Table cells */
         td{
             text-align:center;
             vertical-align:middle;
         }
 
-        /* Update button */
+        /* FLEX container for buttons */
+        .btn-group-custom{
+            display:flex;
+            justify-content:center;
+            gap:5px;   /* 👈 EXACT spacing */
+        }
+
         .update-btn{
             background-color:#A3E4A9;
             color:#0B6623;
             border-radius:20px;
             padding:5px 12px;
             text-decoration:none;
-            margin-right:5px;
         }
 
-        /* Delete button */
         .delete-btn{
             background-color:#FFB3B3;
             color:#8B0000;
             border-radius:20px;
             padding:5px 12px;
-            text-decoration:none;
-        }
-
-        /* Optional top button (if you add later) */
-        .top-btn{
-            display:block;
-            width:250px;
-            margin:20px auto;
-            text-align:center;
-            background-color:#C8FACC;
-            padding:10px;
-            border-radius:25px;
-            color:#0B6623;
             text-decoration:none;
         }
 
@@ -89,17 +77,18 @@
 
 <div class="container">
 
-    <h1>Customers</h1>
+    <h1>Users</h1>
     <hr>
 
     <table class="table table-bordered">
 
         <thead>
         <tr>
-            <th>Customer Name</th>
-            <th>Customer Phone Number</th>
-            <th>Customer Email ID</th>
+            <th>User Name</th>
+            <th>User Phone Number</th>
+            <th>User Email ID</th>
             <th>Actions</th>
+            <th>Investments</th>
         </tr>
         </thead>
 
@@ -111,17 +100,36 @@
             <td th:text="${custInfo.custPhone}"></td>
             <td th:text="${custInfo.custEmail}"></td>
 
+            <!-- Actions -->
             <td>
-                <a th:href="@{/update-customer/{id}(id=${custInfo.custId})}"
-                   class="update-btn">
-                    Update
-                </a>
+                <div class="btn-group-custom">
+                    <a th:href="@{/update-customer/{id}(id=${custInfo.custId})}"
+                       class="update-btn">
+                        Update
+                    </a>
 
-                <a th:href="@{/delete-customer/{id}(id=${custInfo.custId})}"
-                   class="delete-btn"
-                   onclick="return confirm('Are you sure you want to delete this customer?')">
-                    Delete
-                </a>
+                    <a th:href="@{/delete-customer/{id}(id=${custInfo.custId})}"
+                       class="delete-btn"
+                       onclick="return confirm('Are you sure you want to delete this customer?')">
+                        Delete
+                    </a>
+                </div>
+            </td>
+
+            <!-- Investments -->
+            <td>
+                <div class="btn-group-custom">
+                    <a th:href="@{/investment/new/{id}(id=${custInfo.custId})}"
+                       class="update-btn">
+                        Add
+                    </a>
+
+                    <a th:href="@{/investments/view/{id}(id=${custInfo.custId})}"
+                       class="update-btn">
+                        View
+                    </a>
+
+                </div>
             </td>
 
         </tr>

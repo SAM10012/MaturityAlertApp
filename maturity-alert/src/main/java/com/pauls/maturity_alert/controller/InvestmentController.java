@@ -18,9 +18,16 @@ public class InvestmentController {
     @Autowired
     private InvestmentService investmentService;
 
-    @GetMapping("/investment/new")
-    public String addNewInvestment(Model model) {
+    @Autowired
+    private CustomerService customerService;
+
+    @GetMapping("/investment/new/{id}")
+    public String addNewInvestment(@PathVariable(value = "id") Long id, Model model) {
         InvestmentDetails investmentDetails = new InvestmentDetails();
+
+        CustomerDetails customerDetails = customerService.getCustomerById(id);
+        investmentDetails.setCustomer(customerDetails);
+
         model.addAttribute("investDetails", investmentDetails);
         return "new-investment-form";
     }
@@ -38,9 +45,20 @@ public class InvestmentController {
         return "show-all-investments";
     }
 
+    @GetMapping("/investments/view/{id}")
+    public String viewCustInvestments(@PathVariable(value = "id") Long id, Model model) {
+        model.addAttribute("custInvestments", investmentService.getAllInvestmentsByCustId(id));
+        model.addAttribute("custName",customerService.getCustomerById(id).getCustName());
+        return "show-cust-investments";
+    }
+
     @GetMapping("/update-investment/{id}")
-    public String updateInvestment(@PathVariable(value = "id") int id, Model model) {
+    public String updateInvestment(@PathVariable(value = "id") Long id, Model model) {
         InvestmentDetails investmentDetails = investmentService.getInvestmentById(id);
+
+        //Force load customer
+        investmentDetails.getCustomer().getCustId();
+
         model.addAttribute("investDetails", investmentDetails);
         return "update-investment-form";
     }

@@ -81,9 +81,7 @@
 
     <form th:action="@{/investment/save}" th:object="${investDetails}" method="POST">
 
-        <!-- If using customer mapping -->
-        <input type="number" th:field="*{customer.custId}" placeholder="Customer ID"
-               class="form-control mb-3">
+        <input type="hidden" th:field="*{customer.custId}">
 
         <input type="text"
                th:field="*{bankName}"

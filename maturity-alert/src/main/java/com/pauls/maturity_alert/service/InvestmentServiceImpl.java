@@ -47,4 +47,9 @@ public class InvestmentServiceImpl implements InvestmentService{
     public List<InvestmentDetails> getAllInvestments() {
         return investmentRepository.findAll();
     }
+
+    @Override
+    public List<InvestmentDetails> getAllInvestmentsByCustId(Long id) {
+        return investmentRepository.getAllInvestmentsByCustId(id);
+    }
 }

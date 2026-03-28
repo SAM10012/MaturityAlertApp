@@ -90,6 +90,8 @@ public class InvestmentDetails {
 
     public InvestmentDetails() {}
 
+
+
     public InvestmentDetails(CustomerDetails customer, String bankName, String schemeName, Long depositAccountNum, BigDecimal principal, Double interestRate, LocalDate startDate, LocalDate maturityDate, Boolean autoRenew, Long creditAccountNum) {
         this.customer = customer;
         this.bankName = bankName;
