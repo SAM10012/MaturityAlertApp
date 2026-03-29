@@ -1,11 +1,9 @@
 package com.pauls.maturity_alert.model;
+import java.time.temporal.ChronoUnit;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
@@ -33,10 +31,11 @@ public class InvestmentDetails {
     @Column(nullable = false)
     private String schemeName;
 
-    @Column(nullable = false)
-    @NotNull(message = "Deposit account number is required")
-    private Long depositAccountNum;
+    @Pattern(regexp = "\\d{9,18}", message = "Account number must be 9-18 digits")
+    @Column(nullable = false, length = 18)
+    private String depositAccountNum;
 
+    @DecimalMin(value = "1000.00", message = "Minimum deposit should be at least 1000")
     @NotNull(message = "Principal is required")
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal principal;
@@ -60,10 +59,10 @@ public class InvestmentDetails {
     @Column(precision = 15, scale = 2)
     private BigDecimal maturityValue;
 
-    @Column(nullable = false)
-    private Boolean autoRenew = false;
 
-    private Long creditAccountNum;
+    @Pattern(regexp = "\\d{9,18}", message = "Account number must be 9-18 digits")
+    @Column(nullable = false, length = 18)
+    private String creditAccountNum;
 
     @Enumerated(EnumType.STRING)
     private InvestmentStatus status;
@@ -72,21 +71,34 @@ public class InvestmentDetails {
     @PreUpdate
     public void preSave() {
 
-        // default status
-        if (this.status == null) {
-            this.status = InvestmentStatus.ACTIVE;
-        }
-
-        // calculate maturity value
-        if (principal != null && interestRate != null) {
-            double rate = interestRate / 100;
-            this.maturityValue = principal.add(
-                    principal.multiply(BigDecimal.valueOf(rate))
-            );
-        }
-
+        // Date validation
         if (startDate != null && maturityDate != null && maturityDate.isBefore(startDate)) {
             throw new IllegalArgumentException("Maturity date cannot be before start date");
+        }
+
+        // Maturity value calculation (Simple Interest)
+        if (principal != null && interestRate != null && startDate != null && maturityDate != null) {
+
+            long days = ChronoUnit.DAYS.between(startDate, maturityDate);
+            double timeInYears = days / 365.0;
+            double rate = interestRate / 100;
+
+            BigDecimal interest = principal.multiply(
+                    BigDecimal.valueOf(rate * timeInYears)
+            );
+
+            this.maturityValue = principal.add(interest);
+        }
+
+        // Status logic
+        if (maturityDate != null) {
+            LocalDate today = LocalDate.now();
+
+            if (!today.isBefore(maturityDate)) {
+                this.status = InvestmentStatus.MATURED;
+            } else {
+                this.status = InvestmentStatus.ACTIVE;
+            }
         }
     }
 
@@ -95,7 +107,7 @@ public class InvestmentDetails {
 
 
 
-    public InvestmentDetails(CustomerDetails customer, String bankName, String schemeName, Long depositAccountNum, BigDecimal principal, Double interestRate, LocalDate startDate, LocalDate maturityDate, Boolean autoRenew, Long creditAccountNum) {
+    public InvestmentDetails(CustomerDetails customer, String bankName, String schemeName, String depositAccountNum, BigDecimal principal, Double interestRate, LocalDate startDate, LocalDate maturityDate, String creditAccountNum) {
         this.customer = customer;
         this.bankName = bankName;
         this.schemeName = schemeName;
@@ -104,7 +116,6 @@ public class InvestmentDetails {
         this.interestRate = interestRate;
         this.startDate = startDate;
         this.maturityDate = maturityDate;
-        this.autoRenew = autoRenew;
         this.creditAccountNum = creditAccountNum;
     }
 
@@ -140,11 +151,11 @@ public class InvestmentDetails {
         this.schemeName = schemeName;
     }
 
-    public Long getDepositAccountNum() {
+    public String getDepositAccountNum() {
         return depositAccountNum;
     }
 
-    public void setDepositAccountNum(Long depositAccountNum) {
+    public void setDepositAccountNum(String depositAccountNum) {
         this.depositAccountNum = depositAccountNum;
     }
 
@@ -188,13 +199,6 @@ public class InvestmentDetails {
         this.maturityValue = maturityValue;
     }
 
-    public Boolean getAutoRenew() {
-        return autoRenew;
-    }
-
-    public void setAutoRenew(Boolean autoRenew) {
-        this.autoRenew = autoRenew;
-    }
 
     public InvestmentStatus getStatus() {
         return status;
@@ -204,11 +208,11 @@ public class InvestmentDetails {
         this.status = status;
     }
 
-    public Long getCreditAccountNum() {
+    public String getCreditAccountNum() {
         return creditAccountNum;
     }
 
-    public void setCreditAccountNum(Long creditAccountNum) {
+    public void setCreditAccountNum(String creditAccountNum) {
         this.creditAccountNum = creditAccountNum;
     }
 }
