@@ -1,4 +1,4 @@
-# 💰 **MaturityAlert – Investment Maturity Alert System**
+# 💸 **MaturityAlert – Investment Maturity Alert System**
 
 A **Spring Boot based investment maturity alert application** that helps users track investments, calculate interest, and receive automated notifications when investments reach maturity.
 
