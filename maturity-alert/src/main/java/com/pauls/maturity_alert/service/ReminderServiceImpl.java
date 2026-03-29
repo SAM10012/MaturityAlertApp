@@ -45,7 +45,7 @@ public class ReminderServiceImpl {
                         + "Your investment in " + inv.getSchemeName()
                         + " is maturing on " + inv.getMaturityDate() + ".\n"
                         + "Maturity Value: " + inv.getMaturityValue() + "\n\n"
-                        + "Regards,\nMaturityAlert Team";
+                        + "Regards,\nMaturityAlert Team\n\nThis is a Test Email. Please ignore it.";
 
                 emailService.sendEmail(
                         customer.getCustEmail(),
