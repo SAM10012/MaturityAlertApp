@@ -132,7 +132,6 @@ Responsibilities:
 - Store investment and transaction details
 - Query maturity-related data efficiently
 
----
 
 ### Database Layer
 
