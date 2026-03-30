@@ -93,14 +93,14 @@ Handles incoming HTTP requests and returns responses or views.
 
 Controllers:
 
-CustomerController
-InvestmentController
+- CustomerController
+- InvestmentController
 
 Responsibilities:
 
-Receive API requests
-Call appropriate service methods
-Return JSON responses or HTML views
+- Receive API requests
+- Call appropriate service methods
+- Return JSON responses or HTML views
 
 
 ### Service Layer
@@ -109,15 +109,15 @@ Contains the **business logic** of the application.
 
 Services:
 
-CustomerService / CustomerServiceImpl
-InvestmentService / InvestmentServiceImpl
+- CustomerService / CustomerServiceImpl
+- InvestmentService / InvestmentServiceImpl
 
 Responsibilities:
 
-Process customer and investment data
-Calculate interest and maturity status
-Trigger email notifications
-Coordinate repository operations
+- Process customer and investment data
+- Calculate interest and maturity status
+- Trigger email notifications
+- Coordinate repository operations
 
 
 ### Repository Layer
@@ -126,9 +126,9 @@ Handles **database interactions** using Spring Data JPA.
 
 Responsibilities:
 
-Fetch customer and investment records
-Store investment and transaction details
-Query maturity-related data efficiently
+- Fetch customer and investment records
+- Store investment and transaction details
+- Query maturity-related data efficiently
 
 ---
 
@@ -138,8 +138,8 @@ The application uses **MySQL** for persistent storage.
 
 Main tables:
 
-customer_details
-investment_details
+- customer_details
+- investment_details
 
 ---
 
