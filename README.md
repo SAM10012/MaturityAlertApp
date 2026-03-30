@@ -229,27 +229,35 @@ Follow the steps below to run the MedTrack application locally.
 
 2. Create MySQL Database
 
-- CREATE DATABASE maturityalert;
+```bash
+CREATE DATABASE maturityalert;
+```
 
 3. Configure Database Connection
 
 - Open src/main/resources/application.properties and configure your database credentials:
 
-- spring.datasource.url=jdbc:mysql://localhost:3306/maturityalert
-- spring.datasource.username=your_mysql_username
-- spring.datasource.password=your_mysql_password
+```bash
+spring.datasource.url=jdbc:mysql://localhost:3306/maturityalert
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
 
-- spring.jpa.hibernate.ddl-auto=update
-- spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
 
 4. Build the Project
 
-- mvn clean install
+```bash
+mvn clean install
+```
 
 5. Run the Application
 
-- mvn spring-boot:run OR run the main class MaturityAlertApplication.java from your IDE.
-
+```bash
+mvn spring-boot:run
+```
+OR run the main class MaturityAlertApplication.java from your IDE
 
 7. Application Flow
 
@@ -264,6 +272,8 @@ Follow the steps below to run the MedTrack application locally.
 
 **Samadrita Paul**  
 Java Backend Developer | Spring Boot | REST APIs | MySQL
+
+---
 
 ---
 
