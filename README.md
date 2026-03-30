@@ -179,8 +179,6 @@ Main tables:
 
 Follow the steps below to run the MedTrack application locally.
 
----
-
 1. Clone the Repository
 
 - git clone https://github.com/your-username/maturityalert.git
