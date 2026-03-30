@@ -34,7 +34,7 @@ The system allows users to manage investment details, monitor their status, and 
 ---
 
 # 📦 Key Features
-*
+
 -- Full CRUD operations for customer and investment management
 -- Automated calculation of interest and investment status updates
 -- Email notifications for upcoming investment maturities
@@ -42,6 +42,7 @@ The system allows users to manage investment details, monitor their status, and 
 -- Entity relationship management with JPA/Hibernate
 -- Global exception handling
 -- Mobile-friendly interface
+
 ---
 
 # 🔗 REST APIs
@@ -83,7 +84,6 @@ Receive API requests
 Call appropriate service methods
 Return JSON responses or HTML views
 
----
 
 ### Service Layer
 
@@ -101,7 +101,6 @@ Calculate interest and maturity status
 Trigger email notifications
 Coordinate repository operations
 
----
 
 ### Repository Layer
 
@@ -112,6 +111,7 @@ Responsibilities:
 Fetch customer and investment records
 Store investment and transaction details
 Query maturity-related data efficiently
+
 ---
 
 ### Database Layer
@@ -129,22 +129,22 @@ investment_details
 
 **customer_details**
 
-custId
-custName
-email
-phoneNumber
+- custId
+- custName
+- email
+- phoneNumber
 
 **investment_details**
 
-investmentId
-custId
-investmentName
-principalAmount
-startDate
-endDate
-interestRate
-maturityStatus
-interestAmount
+- investmentId
+- custId
+- investmentName
+- principalAmount
+- startDate
+- endDate
+- interestRate
+- maturityStatus
+- interestAmount
 
 ---
 
