@@ -35,13 +35,13 @@ The system allows users to manage investment details, monitor their status, and 
 
 # 📦 Key Features
 
--- Full CRUD operations for customer and investment management
--- Automated calculation of interest and investment status updates
--- Email notifications for upcoming investment maturities
--- Maintain investment history logs
--- Entity relationship management with JPA/Hibernate
--- Global exception handling
--- Mobile-friendly interface
+- Full CRUD operations for customer and investment management
+- Automated calculation of interest and investment status updates
+- Email notifications for upcoming investment maturities
+- Maintain investment history logs
+- Entity relationship management with JPA/Hibernate
+- Global exception handling
+- Mobile-friendly interface
 
 ---
 
