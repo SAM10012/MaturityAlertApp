@@ -172,6 +172,46 @@ Main tables:
 
 # 🖼️ Screenshots
 
+1. View Homepage
+
+![homepage]()
+
+2. Add new customer 
+
+![add_new_cust]()
+
+3. Update customer details 
+
+![update_cust]()
+
+4. View all customers
+
+![view_all_cust]()
+
+5. Delete customer with investment
+
+![del-cust-with-investment]()
+ 
+6. Add new investment for a particular customer using Customer ID 
+
+![add_new_investment]()
+
+7. Update an investment using Investment ID  
+
+![update-investment]()
+
+8. View investments of particular customer using Customer ID 
+
+![view-an-investment]()
+
+9. View all investments
+
+![view-all-investments]()
+    
+10. Maturity Alert Email Notification
+
+![email-notification]()
+
 ---
 
 # 🛠️ How to Run
