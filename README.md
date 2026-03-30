@@ -212,10 +212,10 @@ Follow the steps below to run the MedTrack application locally.
 
 7. Application Flow
 
-1. Open the homepage to view customers and their investments
-2. Add, update, or delete customer and investment records
-3. Check upcoming investment maturities
-4. Receive automated email alerts for matured investments
+- Open the homepage to view customers and their investments
+- Add, update, or delete customer and investment records
+- Check upcoming investment maturities
+- Receive automated email alerts for matured investments
 
 ---
 
