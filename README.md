@@ -111,6 +111,8 @@ Services:
 
 - CustomerService / CustomerServiceImpl
 - InvestmentService / InvestmentServiceImpl
+- EmailService / EmailServiceImpl
+- ReminderService / ReminderServiceImpl
 
 Responsibilities:
 
@@ -147,22 +149,25 @@ Main tables:
 
 **customer_details**
 
-- custId
+- custId (Primary Key)
 - custName
-- email
-- phoneNumber
+- custEmail
+- custPhone
 
 **investment_details**
 
-- investmentId
-- custId
-- investmentName
-- principalAmount
-- startDate
-- endDate
+- investId (Primary Key)
+- custId (Foreign Key)
+- bankName
+- schemeName
+- depositAccountNum
+- principal
 - interestRate
-- maturityStatus
-- interestAmount
+- startDate
+- maturityDate
+- maturityValue
+- creditAccountNum
+- status
 
 ---
 
@@ -178,41 +183,34 @@ Follow the steps below to run the MedTrack application locally.
 
 1. Clone the Repository
 
-git clone https://github.com/your-username/maturityalert.git
-cd maturityalert
+- git clone https://github.com/your-username/maturityalert.git
+- cd maturityalert
 
 2. Create MySQL Database
 
-CREATE DATABASE maturityalert;
+- CREATE DATABASE maturityalert;
 
 3. Configure Database Connection
-Open src/main/resources/application.properties and configure your database credentials:
 
-spring.datasource.url=jdbc:mysql://localhost:3306/maturityalert
-spring.datasource.username=your_mysql_username
-spring.datasource.password=your_mysql_password
+- Open src/main/resources/application.properties and configure your database credentials:
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+- spring.datasource.url=jdbc:mysql://localhost:3306/maturityalert
+- spring.datasource.username=your_mysql_username
+- spring.datasource.password=your_mysql_password
+
+- spring.jpa.hibernate.ddl-auto=update
+- spring.jpa.show-sql=true
 
 4. Build the Project
 
-mvn clean install
+- mvn clean install
 
 5. Run the Application
 
-mvn spring-boot:run
+- mvn spring-boot:run OR run the main class MaturityAlertApplication.java from your IDE.
 
-Or run the main class MaturityAlertApplication.java from your IDE.
 
-6. Access the Application
-Open a browser and go to:
-
-http://localhost:8080
-
----
-
-### 7. Application Flow
+7. Application Flow
 
 1. Open the homepage to view customers and their investments
 2. Add, update, or delete customer and investment records
@@ -225,6 +223,8 @@ http://localhost:8080
 
 **Samadrita Paul**  
 Java Backend Developer | Spring Boot | REST APIs | MySQL
+
+---
 
    
 
