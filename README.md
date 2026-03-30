@@ -174,43 +174,43 @@ Main tables:
 
 1. View Homepage
 
-![homepage]()
+![homepage](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/maturity-alert-homepage.png)
 
 2. Add new customer 
 
-![add_new_cust]()
+![add_new_cust](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/add-new-user.png)
 
 3. Update customer details 
 
-![update_cust]()
+![update_cust](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/update-user-details.png)
 
 4. View all customers
 
-![view_all_cust]()
+![view_all_cust](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/view-all-users.png)
 
 5. Delete customer with investment
 
-![del-cust-with-investment]()
+![del-cust-with-investment](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/delete-customer-with-investment.png)
  
 6. Add new investment for a particular customer using Customer ID 
 
-![add_new_investment]()
+![add_new_investment](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/add-new-investment-of-a-customer.png)
 
 7. Update an investment using Investment ID  
 
-![update-investment]()
+![update-investment](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/update-investment-of-customer.png)
 
 8. View investments of particular customer using Customer ID 
 
-![view-an-investment]()
+![view-an-investment](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/view-investments-of-a-customer.png)
 
 9. View all investments
 
-![view-all-investments]()
+![view-all-investments](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/view-all-investments.png)
     
 10. Maturity Alert Email Notification
 
-![email-notification]()
+![email-notification](https://github.com/SAM10012/MaturityAlertApp/blob/6640da4240e8966435901a61d13cc1e6a790780e/maturity-alert/screenshots/maturity-alert-email.png)
 
 ---
 
