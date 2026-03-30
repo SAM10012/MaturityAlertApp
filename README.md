@@ -47,6 +47,24 @@ The system allows users to manage investment details, monitor their status, and 
 
 # 🔗 REST APIs
 
+**CustomerController**
+
+1. View Homepage - @GetMapping("/")
+2. Add new customer - @GetMapping("/customer/new")
+3. Save customer details - @PostMapping("/customer/save")
+4. View all customers - @GetMapping("/customers/view")
+5. Update a customer using ID - @GetMapping("/update-customer/{id}")
+6. Delete a customer using ID - @GetMapping("/delete-customer/{id}")
+    
+**InvestmentController**
+
+1. Add new investment for a particular customer using Customer ID - @GetMapping("/investment/new/{id}")
+2. Save an investment - @PostMapping("/investment/save")
+3. View all investments - @GetMapping("/investments/view")
+4. View investments of particular customer using Customer ID - @GetMapping("/investments/view/{id}")
+5. Update an investment using Investment ID - @GetMapping("/update-investment/{id}")
+6. Delete an investment using Investment ID - @GetMapping("/delete-investment/{id}")
+
 ---
 
 ## 🏗️ Project Architecture
