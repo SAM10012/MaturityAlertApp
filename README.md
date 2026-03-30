@@ -233,17 +233,25 @@ Follow the steps below to run the MedTrack application locally.
 CREATE DATABASE maturityalert;
 ```
 
-3. Configure Database Connection
+3. Configure Database Connection and SMTP
 
-- Open src/main/resources/application.properties and configure your database credentials:
+- Open src/main/resources/application.properties and configure your database and SMTP:
 
 ```bash
-spring.datasource.url=jdbc:mysql://localhost:3306/maturityalert
-spring.datasource.username=your_mysql_username
-spring.datasource.password=your_mysql_password
+spring.application.name=maturity-alert
+
+spring.datasource.url=jdbc:mysql://localhost:3306/finance
+spring.datasource.username=your-db-username
+spring.datasource.password=your-db-password
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+
+# Brevo SMTP settings
+spring.mail.host=smtp-relay.brevo.com
+spring.mail.port=587
+spring.mail.username=your-smtp-username
+spring.mail.password=your-smtp-key
 ```
 
 4. Build the Project
@@ -272,8 +280,6 @@ OR run the main class MaturityAlertApplication.java from your IDE
 
 **Samadrita Paul**  
 Java Backend Developer | Spring Boot | REST APIs | MySQL
-
----
 
 ---
 
